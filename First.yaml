@@ -1,0 +1,60 @@
+name: Basic flow
+
+on: 
+  # Triggeres the workflow on push or pull only for main branch
+  push:  
+    branch: [ "main" ]
+
+  pull_requst:
+    branch: [ "main" ]
+
+
+  #allows to run workflow manually from Action tab
+  worflow_dispatch:
+
+
+
+job: 
+                            # Define ur job 
+  build-app:
+
+    runs-on: ubuntu-latest       # which machine we needd to run
+  
+    steps:
+
+      - uses: actions/checkout@v2  #  Checkout@v2 will
+      
+      - name: Run 1 line code
+        run: echo hello/ world!            # command running using REUUNERS
+        
+        name: Run  multi-line script      # runs set of command using RUNNERS 
+        run: 
+          echo Add other Action to build,
+          echo test, and deploy your project.
+
+        
+        uses: actions/checkout@v2  #  Checkout@v2 will  
+        name: Install packages 
+        run: pip install ansible   # we are installing ansible     
+
+  build-api:
+    runs-on: windows-latest
+    steps:
+      - run: eho "Building API"
+
+  build-db:
+    needs: build-app
+    runs-on: windows-latest
+    steps:
+      - run: echo "Using Windows"
+
+
+  package:
+    needs: [build-app, build-db]
+    runs-on: macos-latest
+    steps:
+      - run: echo "Using MacOS"    
+  test:
+    runs-on: ubuntu-latest
+    needs: build     # Here build job runs first and after steps
+    steps:      

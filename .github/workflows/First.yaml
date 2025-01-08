@@ -10,7 +10,7 @@ on:
 
 
   #allows to run workflow manually from Action tab
-  worflow_dispatch:
+  workflow_dispatch:
 
 
 

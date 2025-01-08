@@ -31,7 +31,8 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        run: echo test, and deploy your project.
+        run: 
+             echo test, and deploy your project.
              echo Add other actions to build,
 
   build-api:
@@ -46,7 +47,7 @@ jobs:
       - run: echo "Using Windows"
 
 
-   package: 
+  package:
       needs: [build-app, build-db]
       runs-on: macos-latest
       steps:

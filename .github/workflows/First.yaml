@@ -5,7 +5,7 @@ on:
   push:  
     branch: [ "main" ]
 
-  pull_requst:
+  pull_request:
     branch: [ "main" ]
 
 
